@@ -11,6 +11,8 @@ import {
   View,
 } from 'react-native';
 import Home from '../screens/Home'
+import { NavigationContainer } from '@react-navigation/native';
+import AppStack from '../routes/app';
 
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
@@ -19,7 +21,10 @@ const width = Dimensions.get('window').width
  const App = () => {
 
     return( 
-        <Home />
+        //<Home />
+        <NavigationContainer>
+          <AppStack />
+        </NavigationContainer>
     )
 }
 
