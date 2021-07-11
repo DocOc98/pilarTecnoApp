@@ -35,7 +35,12 @@ export const Tabs = () => {
         component={HomeStackScreen}
         options={{
           tabBarIcon: ({color}) => (
-            <Icon name={'home'} type="font-awesome-5" size={20} color={color} />
+            <FontAwesomeIcon
+              icon={faHome}
+              type="font-awesome-5"
+              size={20}
+              color={color}
+            />
           ),
         }}
       />

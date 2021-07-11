@@ -40,7 +40,7 @@ export default class Home extends React.Component {
           <View style={{flexDirection:'row'}}>   
             <TouchableOpacity 
               onPress={()=>this._onHomePress()}
-              style={[styles.button, { backgroundColor:'rgba(60, 179, 113, 0.5)' }]}
+              style={[styles.button, { backgroundColor:'rgba(127, 179, 213, 0.5)' }]}
             >
               <Text style={styles.text}>
                 Principal
@@ -55,13 +55,13 @@ export default class Home extends React.Component {
           </View>
 
           <View style={{flexDirection:'row', }}>
-            <TouchableOpacity style={[styles.button, { backgroundColor:'rgba(255, 165, 0, 0.5)' }]}>
+            <TouchableOpacity style={[styles.button, { backgroundColor:'rgba(236, 112, 99, 0.5)' }]}>
               <Text style={styles.text}>
                 Posteos
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.button, { backgroundColor:'rgba(0, 165, 188, 0.8)' }]}>
+            <TouchableOpacity style={[styles.button, { backgroundColor:'rgba(142, 68, 173, 0.5)' }]}>
               <Text style={styles.text}>
                 Mapa
               </Text>
@@ -78,14 +78,14 @@ const styles = StyleSheet.create({
   text: {
     fontSize:30, 
     fontWeight:'bold', 
-    color:'#fff',
+    color:'#880E4F',
     textAlign:'center'
   },
   button: {
     margin: width/20,
     height:width/2.5,
     width:width/2.5,
-    borderRadius:15,
+    borderRadius:35,
     justifyContent:'center',
     backgroundColor:'#fff',
     zIndex:1
