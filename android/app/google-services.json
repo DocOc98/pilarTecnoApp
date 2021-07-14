@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "358552975672",
+    "project_id": "pilartecnoapp-895f0",
+    "storage_bucket": "pilartecnoapp-895f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358552975672:android:4f0d23d65d07f6c580e9cd",
+        "android_client_info": {
+          "package_name": "com.pilartectoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358552975672-dsuil1r1insomhqf6bq1l6qn8lrftqvd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRpeN2LMKTiIJ7FFi7gpVVIIZs7Q8SVKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358552975672-dsuil1r1insomhqf6bq1l6qn8lrftqvd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
