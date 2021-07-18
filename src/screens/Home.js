@@ -11,23 +11,27 @@ import {
   View,
   Alert
 } from 'react-native';
+import { ProfileStackScreen } from '../routs/ProfileStack';
+import Profile from '../screens/Profile';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
 
 
 export default class Home extends React.Component {
-
+  constructor(props) {
+    super(props);
+  }  
   _onHomePress = () => {
     Alert.alert(
       "Hola",
-      "Ya te encuentras ahí",
+      "Ya te encuentras en Home",
       [
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ]
     );
   }
-
 
   render(){
     return( 
@@ -47,21 +51,30 @@ export default class Home extends React.Component {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.button, { backgroundColor:'rgba(238, 0, 238, 0.5)' }]}>
-              <Text style={styles.text}>
-                Perfil
-              </Text>
+            <TouchableOpacity 
+              onPress={() => this.props.navigation.navigate("Profile")} 
+              style={[styles.button, { backgroundColor:'rgba(238, 0, 238, 0.5)' }]}>
+                       
+                  <Text style={styles.text}>
+                    Perfil
+                  </Text>
+                
             </TouchableOpacity>
+            
           </View>
 
           <View style={{flexDirection:'row', }}>
-            <TouchableOpacity style={[styles.button, { backgroundColor:'rgba(236, 112, 99, 0.5)' }]}>
+            <TouchableOpacity 
+              onPress={() => this.props.navigation.navigate("Posts")}
+              style={[styles.button, { backgroundColor:'rgba(236, 112, 99, 0.5)' }]}>
               <Text style={styles.text}>
                 Posteos
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.button, { backgroundColor:'rgba(142, 68, 173, 0.5)' }]}>
+            <TouchableOpacity 
+              onPress={() => this.props.navigation.navigate("Map")}
+              style={[styles.button, { backgroundColor:'rgba(142, 68, 173, 0.5)' }]}>
               <Text style={styles.text}>
                 Mapa
               </Text>

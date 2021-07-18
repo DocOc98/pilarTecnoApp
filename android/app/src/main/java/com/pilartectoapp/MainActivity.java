@@ -1,4 +1,4 @@
-package com.pilartectoapp;
+package com.pilartecnoapp;
 
 import com.facebook.react.ReactActivity;
 
