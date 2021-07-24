@@ -1,2 +1,0 @@
-const DEL_POSTS=3;
-const UPDATE_POSTS=7;

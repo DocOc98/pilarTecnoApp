@@ -11,6 +11,9 @@ import {
   View,
   Alert
 } from 'react-native';
+import { Divider } from 'react-native-elements/dist/divider/Divider';
+import { actions } from '../store'
+import { connect } from 'react-redux'
 
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width

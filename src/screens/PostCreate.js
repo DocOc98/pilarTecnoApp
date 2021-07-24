@@ -60,7 +60,15 @@ class PostCreate extends React.Component {
           multiline
           numberOfLines={2}
         />
-        <Button title='Postear' onPress={()=>this._send()} style={{width:width*0.8}}/>
+        <TouchableOpacity
+                onPress={() => this._send()}
+                style={[
+                  styles.button,                 
+                ]}
+                >
+                <Text>Nuevo Post</Text>
+        </TouchableOpacity>
+        {/*<Button title='Postear' onPress={()=>this._send()} style={{width:width*0.8}}/>*/}
       </ImageBackground>
       {/* </View> */}
       </SafeAreaView>

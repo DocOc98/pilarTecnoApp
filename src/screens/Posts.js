@@ -1,17 +1,16 @@
-import React,{ Component } from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   Dimensions,
-  StatusBar,
   StyleSheet,
   Text,
-  ImageBackground,
-  TouchableOpacity,
+  ActivityIndicator,
+  FlatList,
   View,
-  Alert
+  ImageBackground,
+  TouchableOpacity
 } from 'react-native';
-import { Button, Divider } from 'react-native-elements'
+import { Button, Divider, withTheme } from 'react-native-elements'
 import { actions } from '../store'
 import { connect } from 'react-redux'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -19,25 +18,26 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
 
-
-export default class Posts extends React.Component {
-
+class Posts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts:null,
+      posts: this.setState.item,
     }
   }
 
-  componentDidMount = ()=>{
+  componentDidMount = () => {
     this.props.getPosts()
   }
-
+  
   keyExtractor = (item, index) => index.toString()
-
   renderItem = ({ item }) => (
-    <TouchableWithoutFeedback onPress={()=>this.props.navigation.navigate('PostDetail', { item })} >
-      <View style={{ margin:20, backgroundColor:'rgba(0,0,0,0.5)', borderRadius:8, padding:5}}>
+    <TouchableWithoutFeedback onPress={() =>
+      this.props.navigation.navigate('PostDetail', { item })} >
+      <View style={{
+        margin: 20, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: 8,
+        padding: 5,
+      }}>
         <View style={styles.titlecontainer}>
           <Text style={styles.title}>
             {item.title}
@@ -53,69 +53,86 @@ export default class Posts extends React.Component {
     </TouchableWithoutFeedback>
   )
 
-  _onPostPress = () => {
-    Alert.alert(
-      "Hola",
-      "Ya te encuentras en Post",
-      [
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ]
-    );
-  }
-
-
-  render(){
-    return(  
-      <SafeAreaView style={{flex:1, justifyContent:'center', alignItems:'center', backgroundColor:'white'}}>
+  render() {
+    return (
+      <SafeAreaView style={{
+        flex: 1, justifyContent: 'center', alignItems: 'center',
+        //backgroundColor: 'white'
+      }}>
         {
-          !this.props.posts?
-          <ActivityIndicator />
-          :
-          <ImageBackground style={{height, width, paddingTop:height/9}} source={require('../assets/images/fondo7.jpg')}>
-            <View style={{flex:1}}>
-              <Button title='Crear Nuevo Post'onPress={()=>this.props.navigation.navigate('PostCreate')}/>
-              <FlatList keyExtractor={this.keyExtractor} data={this.props.posts} renderItem={this.renderItem} />
-            </View>
-          </ImageBackground>
+          !this.props.posts ?
+            <ActivityIndicator />
+            :
+            <ImageBackground
+              style={{ height, width, paddingTop: height / 9 }}
+              source={require('../assets/images/sakurafondo.jpg')}
+            >
+              <View style={{ flex: 1 }}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('PostCreate')}
+                style={[
+                  styles.button,                 
+                ]}
+                >
+                <Text>Nuevo Post</Text>
+                </TouchableOpacity>
+                <FlatList
+                  keyExtractor={this.keyExtractor}
+                  data={this.props.posts.reverse()}
+                  renderItem={this.renderItem}
+                />   
+              </View>
+            </ImageBackground>
         }
       </SafeAreaView>
-    )
+    )   
   }
 }
 
 const styles = StyleSheet.create({
   text: {
-    fontSize:14,
-    color:'#fff',
-    textAlign:'center'
+    fontSize: 14,
+    color: '#fff',
+    textAlign: 'center'
   },
   title: {
-    fontSize:16,
-    fontWeight:'bold',
-    color:'#fff',
-    textAlign:'center'
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
+    textAlign: 'center'
   },
-  titlecontainer:{
-    padding:10
+  titlecontainer: {
+    padding: 10
   },
-  bodycontainer:{
-    padding:10
+  bodycontainer: {
+    padding: 10
   },
   content: {
-    margin: width/20,
-    height:width/2.5,
-    width:width/2.5,
-    borderRadius:15,
-    justifyContent:'center',
-  }
+    margin: width / 20,
+    height: width / 2.5,
+    width: width / 2.5,
+    borderRadius: 15,
+    justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: 'rgba(165, 105, 189, 0.5)',
+    margin: width / 20,
+    width: width/2,
+    marginLeft: 90,    
+    borderRadius: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+  },
 })
 
 const mapDispatchToProps = dispatch => ({
-  getPosts: () => dispatch(actions.posts.getPosts()),
+  getPosts: () =>
+    dispatch(actions.posts.getPosts()),
 })
 
 const mapStateToProps = state => ({
   posts: state.posts.posts,
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)((Posts))
+export default connect(mapStateToProps, mapDispatchToProps)((Posts))
