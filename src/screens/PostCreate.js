@@ -38,7 +38,7 @@ class PostCreate extends React.Component {
   render(){
     return( 
       <SafeAreaView style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-      <ImageBackground style={[styles.content,{height, width }]} source={require('../assets/images/fondo7.jpg')}>
+      <ImageBackground style={[styles.content,{height, width }]} source={require('../assets/images/fondo6.jpg')}>
         <Input
           placeholder='Titulo'
           inputContainerStyle={{width:width*0.8, alignItems:'flex-start',
