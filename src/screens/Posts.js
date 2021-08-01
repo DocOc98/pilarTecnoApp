@@ -37,6 +37,7 @@ class Posts extends React.Component {
       <View style={{
         margin: 20, backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: 8,
         padding: 5,
+        
       }}>
         <View style={styles.titlecontainer}>
           <Text style={styles.title}>
@@ -76,11 +77,14 @@ class Posts extends React.Component {
                 >
                 <Text>Nuevo Post</Text>
                 </TouchableOpacity>
+                
                 <FlatList
+                  style={{marginBottom: 80}}
                   keyExtractor={this.keyExtractor}
                   data={this.props.posts.reverse()}
-                  renderItem={this.renderItem}
+                  renderItem={this.renderItem}                  
                 />   
+               
               </View>
             </ImageBackground>
         }
@@ -88,7 +92,6 @@ class Posts extends React.Component {
     )   
   }
 }
-
 const styles = StyleSheet.create({
   text: {
     fontSize: 14,
@@ -125,14 +128,11 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 })
-
 const mapDispatchToProps = dispatch => ({
   getPosts: () =>
     dispatch(actions.posts.getPosts()),
 })
-
 const mapStateToProps = state => ({
   posts: state.posts.posts,
 })
-
 export default connect(mapStateToProps, mapDispatchToProps)((Posts))

@@ -153,6 +153,7 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        
     }
     buildTypes {
         debug {
@@ -185,6 +186,10 @@ android {
 }
 
 dependencies {
+
+    implementation project(':react-native-geolocation-service')
+    implementation platform('com.google.firebase:firebase-bom:28.2.1')
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules

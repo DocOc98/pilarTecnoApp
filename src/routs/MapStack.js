@@ -6,7 +6,7 @@ const MapStack = createStackNavigator();
 
 export const MapStackScreen = () => {
     return(
-        <MapStack.Navigator>
+        <MapStack.Navigator headerMode="none">
             <MapStack.Screen name="Map" component={Map} />            
         </MapStack.Navigator>
     )
