@@ -39,15 +39,16 @@ class Posts extends React.Component {
         padding: 5,
         
       }}>
+        
         <View style={styles.titlecontainer}>
           <Text style={styles.title}>
-            {item.title}
+            {item.name}
           </Text>
         </View>
         <Divider />
         <View style={styles.bodycontainer}>
           <Text style={styles.text}>
-            {item.body}
+           Dirección: {item.address}
           </Text>
         </View>
       </View>

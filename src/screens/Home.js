@@ -26,7 +26,7 @@ export default class Home extends React.Component {
   _onHomePress = () => {
     Alert.alert(
       "Hola",
-      "Ya te encuentras en Home",
+      "Ya te encuentras en Inicio",
       [
         { text: "OK", onPress: () => console.log("OK Pressed") }
       ]
@@ -38,7 +38,7 @@ export default class Home extends React.Component {
     <SafeAreaView style={{flex:1}}>
       <ImageBackground
         style={{height}}
-        source={require('../assets/images/fondo6.jpg')}
+        source={require('../assets/images/sakurafondo.jpg')}
       >
         <View style={{flexDirection:'column', height, justifyContent:'center'}}>
           <View style={{flexDirection:'row'}}>   
@@ -47,7 +47,7 @@ export default class Home extends React.Component {
               style={[styles.button, { backgroundColor:'rgba(127, 179, 213, 0.5)' }]}
             >
               <Text style={styles.text}>
-                Principal
+                Inicio
               </Text>
             </TouchableOpacity>
 
@@ -68,7 +68,7 @@ export default class Home extends React.Component {
               onPress={() => this.props.navigation.navigate("Posts")}
               style={[styles.button, { backgroundColor:'rgba(236, 112, 99, 0.5)' }]}>
               <Text style={styles.text}>
-                Posteos
+                Lugares
               </Text>
             </TouchableOpacity>
 

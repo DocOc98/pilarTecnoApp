@@ -11,63 +11,120 @@ import { Input, Button } from 'react-native-elements'
 import { ListItem } from 'react-native-elements/dist/list/ListItem';
 import { connect } from 'react-redux'
 import { actions } from '../store'
-
 const height = Dimensions.get('window').height
 const width = Dimensions.get('window').width
+
 
 class PostEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      body: ''
+      id: '',
+      name: '',
+      address: '',
+      latitude: '',
+      longitude: '',
+      url: '',
     }
   }
 
   componentDidMount = () => {
     const {item} = this.props.route.params;
     if ({item}){
-      this.setState({title: item.title, body: item.body})
+      this.setState({
+        id: item.id,
+        name: item.name,
+        address: item.address,
+        latitude: item.latitude,
+        longitude: item.longitude,
+        url: item.url,  
+      })
     }
     
   }
 
-  _updatePost = () => {
-    const { title, body } = this.state;
+  _updatePost = () => {  
+    const { name, address, latitude, longitude, url } = this.state;     
     const {item} = this.props.route.params;
-    const {id} = item;
+    const {_id} = item;
+    
+    console.log('***********')
+    console.log(item)
+    console.log('***********')
     ///VALIDACIONES
-    this.props.updatePost({title, body, id}).then(() => {
+    this.props.updatePost({_id, name, address, latitude, longitude, url}).then(() => {
       //this.props.navigation.navigate('Posts') Tambien funciona con esta linea
       this.props.navigation.popToTop()
     })
   }
   render() {
+    
     return (
       <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ImageBackground style={[styles.content, { height, width }]} source={require('../assets/images/sakurafondo.jpg')}>
-          <Input
+        <ImageBackground
+          style={[styles.content, { height, width }]}
+          source={require('../assets/images/sakurafondo.jpg')}
+        >
+          <Input           
             inputContainerStyle={{
-              width: width * 0.8, alignItems: 'flex-start',
-              alignSelf: 'center', backgroundColor: 'rgba(0,0,0,0.5)', pading: 15
+              // width: width * 0.8, alignItems: 'flex-start',
+              alignSelf: 'center', backgroundColor: 'rgba(0,0,0,0.5)'
             }}
             inputStyle={{ color: 'white', marginLeft: 15 }}
             placeholderTextColor='#ccc'
-            value={this.state.title}
-            onChangeText={(value) => this.setState({ title: value })}
+            value={this.state.name}
+            onChangeText={(value) => this.setState({ name: value })}
           />
-          <Input
+          <Input            
             inputContainerStyle={{
-              width: width * 0.8, alignItems: 'flex-start',
-              alignSelf: 'center', height: height * 0.4, backgroundColor: 'rgba(0,0,0,0.5)',
-              pading: 15
+              // width: width * 0.8, alignItems: 'flex-start',
+              alignSelf: 'center', backgroundColor: 'rgba(0,0,0,0.5)'
             }}
             inputStyle={{ color: 'white', marginLeft: 15 }}
             placeholderTextColor='#ccc'
-            value={this.state.body}
+            value={this.state.address}
+            onChangeText={(value) => this.setState({ address: value })}
+            // multiline
+            // numberOfLines={2}
+          />
+           <Input
+            
+            inputContainerStyle={{
+              // width: width * 0.8, alignItems: 'flex-start',
+              alignSelf: 'center', backgroundColor: 'rgba(0,0,0,0.5)'
+            }}
+            inputStyle={{ color: 'white', marginLeft: 15 }}
+            placeholderTextColor='#ccc'
+            value={this.state.latitude}
+            onChangeText={(value) => this.setState({ latitude: value })}
+            // multiline
+            // numberOfLines={2}
+          />
+           <Input
+            
+            inputContainerStyle={{
+              // width: width * 0.8, alignItems: 'flex-start',
+              alignSelf: 'center', backgroundColor: 'rgba(0,0,0,0.5)'
+            }}
+            inputStyle={{ color: 'white', marginLeft: 15 }}
+            placeholderTextColor='#ccc'
+            value={this.state.longitude}
+            onChangeText={(value) => this.setState({ longitude: value })}
+            // multiline
+            // numberOfLines={2}
+          />
+           <Input
+            
+            inputContainerStyle={{
+              // width: width * 0.8, alignItems: 'flex-start',
+              alignSelf: 'center', height: height * 0.1, backgroundColor: 'rgba(0,0,0,0.5)'
+            }}
+            inputStyle={{ color: 'white', marginLeft: 15 }}
+            placeholderTextColor='#ccc'
+            value={this.state.url}
             onChangeText={(value) => this.setState({ body: value })}
             multiline
-            numberOfLines={2}
+            numberOfLines={3}
           />
           <TouchableOpacity
                 onPress={() => this._updatePost()}
@@ -77,13 +134,13 @@ class PostEdit extends React.Component {
                 >
                 <Text>Actualizar Post</Text>
           </TouchableOpacity>
+          
         </ImageBackground>
         {/* </View> */}
       </SafeAreaView>
     )
   }
 }
-
 const styles = StyleSheet.create({
   text: {
     fontSize: 30,
@@ -110,12 +167,11 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 })
-
 const mapDispatchToProps = dispatch => ({
   updatePost: (data) =>
     dispatch(actions.posts.updatePost(data)),
 })
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
+ 
 })
-
 export default connect(mapStateToProps, mapDispatchToProps)((PostEdit))

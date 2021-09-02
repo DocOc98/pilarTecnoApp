@@ -8,7 +8,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 const PostStack = createStackNavigator();
 
 export const PostsStackScreen = () => {
-    return(
+    return (
         <PostStack.Navigator>
             <PostStack.Screen
                 name="Posts"
@@ -37,7 +37,7 @@ export const PostsStackScreen = () => {
                 name="PostEdit"
                 component={PostEdit}
                 options={{
-                    title: 'Editar',
+                    title: 'Editar Lugar',
                     headerStyle: {
                         backgroundColor: 'rgba(142, 68, 173, 0.3)'
                     },
@@ -48,7 +48,7 @@ export const PostsStackScreen = () => {
                 name="PostCreate"
                 component={PostCreate}
                 options={{
-                    title: 'Nuevo Post',
+                    title: 'Nuevo Lugar',
                     headerStyle: {
                         backgroundColor: 'rgba(142, 68, 173, 0.3)'
                     },
